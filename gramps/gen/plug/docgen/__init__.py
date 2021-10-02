@@ -38,3 +38,4 @@ from .textdoc import TextDoc, IndexMark,INDEX_TYPE_ALP, INDEX_TYPE_TOC,\
 from .drawdoc import DrawDoc
 from .graphdoc import GVDoc
 from .treedoc import TreeDoc
+

@@ -27,7 +27,7 @@
 #-------------------------------------------------------------------------------
 from ._graphreportdialog import GraphReportDialog, BaseFormatComboBox
 from gramps.gen.plug.report import CATEGORY_TREE
-import gramps.gen.plug.docgen.treedoc as treedoc
+from gramps.plugins.docgen import latextreedoc as treedoc
 
 #-----------------------------------------------------------------------
 #
@@ -53,7 +53,7 @@ class TreeReportDialog(GraphReportDialog):
         """
         Return the graph options.
         """
-        return treedoc.TreeOptions()
+        return treedoc.LaTeXTreeOptions()
 
 #-------------------------------------------------------------------------------
 #

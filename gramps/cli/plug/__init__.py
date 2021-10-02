@@ -47,8 +47,8 @@ LOG = logging.getLogger(".")
 #-------------------------------------------------------------------------
 from gramps.gen.plug import BasePluginManager
 from gramps.gen.plug.docgen import (StyleSheet, StyleSheetList, PaperStyle,
-                                    PAPER_PORTRAIT, PAPER_LANDSCAPE, graphdoc,
-                                    treedoc)
+                                    PAPER_PORTRAIT, PAPER_LANDSCAPE, graphdoc)
+from gramps.plugins.docgen import latextreedoc as treedoc
 from gramps.gen.plug.menu import (FamilyOption, PersonOption, NoteOption,
                                   MediaOption, PersonListOption, NumberOption,
                                   BooleanOption, DestinationOption, Option,
@@ -253,7 +253,7 @@ class CommandLineReport:
                         name] = menu.get_option_by_name(name).get_value()
         if category == CATEGORY_TREE:
             # Need to include Genealogy Tree options
-            self.__toptions = treedoc.TreeOptions()
+            self.__toptions = treedoc.LaTeXTreeOptions()
             menu = self.option_class.menu
             self.__toptions.add_menu_options(menu)
             for name in menu.get_all_option_names():
