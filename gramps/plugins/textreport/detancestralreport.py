@@ -386,8 +386,8 @@ class DetAncestorReport(Report):
             birth_ref = person.get_birth_ref()
             death_ref = person.get_death_ref()
             for event_ref in person.get_primary_event_ref_list():
-                if event_ref == birth_ref or event_ref == death_ref:
-                    continue
+                #if event_ref == birth_ref or event_ref == death_ref:
+                #    continue
                 first = write_more_header(first, name)
                 self.write_event(event_ref)
 
