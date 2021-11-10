@@ -188,6 +188,7 @@ class FanChart(Report):
         self.radial = menu.get_option_by_name('radial').get_value()
         pid = menu.get_option_by_name('pid').get_value()
         self.draw_empty = menu.get_option_by_name('draw_empty').get_value()
+        self.write_title = menu.get_option_by_name('write_title').get_value()
         self.same_style = menu.get_option_by_name('same_style').get_value()
         self.center_person = self.database.get_person_from_gramps_id(pid)
         if self.center_person is None:
@@ -306,10 +307,11 @@ class FanChart(Report):
         if optimized_style_sheet:
             self.doc.set_style_sheet(optimized_style_sheet)
 
-        # title
-        mark = IndexMark(title, INDEX_TYPE_TOC, 1)
-        self.doc.center_text('FC-Graphic-title', title,
-                             self.doc.get_usable_width() / 2, 0, mark)
+        if self.write_title:
+            # title
+            mark = IndexMark(title, INDEX_TYPE_TOC, 1)
+            self.doc.center_text('FC-Graphic-title', title,
+                                 self.doc.get_usable_width() / 2, 0, mark)
         # wheel
         for generation in range(0, min(max_circular, self.max_generations)):
             self.draw_circular(_x_, _y_,
@@ -720,6 +722,11 @@ class FanChartOptions(MenuReportOptions):
         draw_empty.set_help(_("Draw the background "
                               "although there is no information"))
         menu.add_option(category_name, "draw_empty", draw_empty)
+
+        write_title = BooleanOption(_("Write title"), True)
+        write_title.set_help(_("Write a title"))
+        menu.add_option(category_name, "write_title", write_title)
+
 
         same_style = BooleanOption(_("Use one font style "
                                      "for all generations"), True)
