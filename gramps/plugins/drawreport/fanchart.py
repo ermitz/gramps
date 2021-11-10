@@ -570,7 +570,7 @@ class FanChart(Report):
                         # determine maximum width allowed for this generation
                         rad1, rad2 = self.get_radial_radius(
                             block_size, generation, self.circle)
-                        max_width = rad2 - rad1
+                        max_width = (rad2 - rad1)*0.8
 
                         # reduce the font so that longest_width
                         # fit into max_width
